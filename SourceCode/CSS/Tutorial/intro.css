@@ -1,0 +1,8 @@
+.box {
+    width: 200px;
+    height: 200px;
+    margin: 100px;
+    background: tomato;
+    border: solid lightblue 100px;
+    padding: 100px;
+}

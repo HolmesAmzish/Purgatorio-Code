@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Float Placeholder</title>
+        <meta name="description" content="The example of float placeholder">
+        <meta charset="UTF-8">
+    </head>
+    <style>
+        body {
+            background: #d3edf8;
+        }
+        .input-group {
+            position: relative;
+        }
+        input {
+            padding: 10px;
+            background: #d3edf8;
+            border-radius: 2px;
+            outline: none;
+            color: #444444;
+            border: 1px solid #0da2ff;
+            border-radius: 3px;
+        }
+        .placeholder {
+            position: absolute;
+            top: 8px;
+            left: 8px;
+            font-size: 14px;
+            padding: 0px 6px;
+            color: #0da2ff;
+            transition: 0.3s;
+            pointer-events: none;
+        }
+        input:focus + .placeholder,
+        input:not(:placeholder-shown) + .placeholder {
+            top: -5px;
+            background-color: #d3edf8;
+        }
+    </style>
+    <body>
+        <div class = "input-gourp">
+            <input type="text" class="input" placeholder="">
+            <label class="placeholder">Username</label>
+        </div>
+    </body>
+</html>
