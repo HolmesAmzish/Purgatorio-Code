@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            background-color: #dee0ff;
+        }
+        #navigation {
+            width:150px;
+            font-family: Arial;
+            font-size: 14px;
+            text-align: right;
+        }
+        #navigation ul {
+            list-style-type: none;
+            /* 不显示项目符号 */
+            margin: 0px;
+            /* 外间距设置为0 */
+            padding: 0px;
+            /* 内间距设置为0 */
+        }
+        #navigation li {
+            border-bottom: 1px solid #9f9fed;
+            /* 添加下边线 */
+        }
+        #navigation li a {
+            display: block;
+            height: 1em;
+            padding: 5px 5px 5px 0.5em;
+            text-decoration: none;
+            border-left: 12px solid #151571;
+            border-right: 1px solid #151571;
+        }
+        #navigation li a:link, #navigation li a:visited {
+            background-color: #1136c1;
+            color: white;
+        }
+        #navigation li a:hover {
+            background-color: #002099;
+            color: #ff0;
+            border-left: 12px solid yellow;
+        }
+    </style>
+</head>
+<body>
+    <div id="navigation">
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Contact us</a></li>
+            <li><a href="#">Web Dev</a></li>
+            <li><a href="#">Web Design</a></li>
+            <li><a href="#">Map</a></li>
+        </ul>
+    </div>
+</body>
+</html>
