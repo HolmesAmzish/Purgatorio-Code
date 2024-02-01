@@ -1,0 +1,4 @@
+1	Inferno_I	121.40.43.168
+2	Inferno_II	8.130.21.46
+3	Purgatory	192.168.1.8
+4	Limbo IV	192.168.1.6
