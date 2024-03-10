@@ -23,14 +23,13 @@ void CreatList(SqList *L, int a[], int n)
     }
     L->length = k;
 }
-void display(SqList *L)
-{
-    int i, j, t;
-    for (i = 0; i < L->length; i++)
+void display(SqList *L) {
+    int t;
+    for (int i = 0; i < L->length - 1; i++) 
     {
-        for (j = 0; j < L->length - i - 1; j++)
+        for (int j = 0; j < L->length - i - 1; j++) 
         {
-            if (L->data[j] > L->data[j + 1])
+            if (L->data[j] > L->data[j + 1]) 
             {
                 t = L->data[j];
                 L->data[j] = L->data[j + 1];
@@ -38,14 +37,14 @@ void display(SqList *L)
             }
         }
     }
-    for (i = 0; i < L->length; i++)
-    {
+
+    for (int i = 0; i < L->length; i++) {
         printf("%d ", L->data[i]);
     }
     printf("\n");
 }
-bool ListInsert(SqList *L, int e)
-{
+
+bool ListInsert(SqList *L, int e) {
     if (L->length == Maxsize)
     {
         return false;
@@ -93,26 +92,25 @@ void hebing(SqList *L1, SqList *L2, SqList *L3)
     }
     L3->length = i;
 }
-void deleterange(SqList *L, int s, int t)
-{
-    if (s >= t)
-    {
-        printf("输入错误");
+
+void deleterange(SqList *L, int s, int t) {
+    if (s >= t || s < 0 || t > L->length) {
+        printf("输入错误\n");
     }
-    int i = 0;
-    int k = 0;
-    while (i < L->length)
-    {
-        if (s <= L->data[i] && t >= L->data[i])
-        {
-            k++;
+    int i = 0, k = 0;
+    while (i < L->length) {
+        if (s <= L->data[i] && L->data[i] <= t) {
+            // 跳过待删除的元素
+            i++;
+        } else {
+            // 保留非删除区间的元素
+            L->data[k++] = L->data[i];
+            i++;
         }
-        else
-            L->data[i - k] = L->data[i];
-        i++;
     }
-    L->length = L->length - k;
+    L->length = k;
 }
+
 int main()
 {
     SqList L1, L2, L3;
@@ -154,5 +152,13 @@ int main()
     display(&L3);
     deleterange(&L3, s, t);
     display(&L3);
+    getchar();
     return 0;
 }
+
+/*
+1 3 5 7 9 2 3 -1
+3
+3 5 6 -1
+1 3
+*/
