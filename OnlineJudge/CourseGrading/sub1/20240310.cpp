@@ -1,17 +1,21 @@
 #include <stdio.h>
 #include <stdbool.h>
 #include <stdlib.h>
+
 #define Maxsize 50
+
 typedef struct
 {
     int data[Maxsize];
     int length;
 } SqList;
+
 void InitList(SqList *L)
 {
     L = (SqList *)malloc(sizeof(SqList));
     L->length = 0;
 }
+
 void CreatList(SqList *L, int a[], int n)
 {
     int i = 0, k = 0;
@@ -23,6 +27,7 @@ void CreatList(SqList *L, int a[], int n)
     }
     L->length = k;
 }
+
 void display(SqList *L) {
     int t;
     for (int i = 0; i < L->length - 1; i++) 
@@ -62,6 +67,7 @@ bool ListInsert(SqList *L, int e) {
     L->length++;
     return true;
 }
+
 void deleteelem(SqList *L, int x)
 {
     int k = 0;
@@ -76,6 +82,7 @@ void deleteelem(SqList *L, int x)
     }
     L->length = k;
 }
+
 void hebing(SqList *L1, SqList *L2, SqList *L3)
 {
     int i = 0, j = 0;
@@ -119,16 +126,9 @@ int main()
     InitList(&L3);
     int a[100], b[100];
     int x1, x2, length1, length2, e;
-    while (1)
-    {
-        scanf("%d", &x1);
-        if (x1 != -1)
-        {
-            a[length1] = x1;
-            length1++;
-        }
-        else
-            break;
+    while (x1 = getchar()) {
+        a[length1] = x1;
+        length1++;
     }
     CreatList(&L1, a, length1);
     scanf("%d", &e);
