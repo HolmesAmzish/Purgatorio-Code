@@ -13,6 +13,12 @@ int main() {
         cout << sequence[i] << ' ';
         if (sequence.at(i) == find) count++;
     }
-    cout << endl << sequence.at(position - 1) << '\n' << count;
+    cout << endl;
+    if (position > 0 && position <= sequence.size()) {
+        cout << sequence.at(position - 1) << '\n';
+    } else {
+        cout << "error" << endl;
+    }
+    cout << count;
     return 0;
 }
