@@ -20,25 +20,56 @@ void CreateList(SequenceType &sequence) {
     sequence.length = i;
 }
 
-void DisplayList(SequenceType sequence) {
+void DisplayList1(SequenceType sequence) {
     for (int i = 0; i < sequence.length; i++) {
         cout << sequence.list[i] << ' ';
     }
     cout << endl;
 }
 
+void DisplayList2(SequenceType sequence) {
+    for (int i = 0; i < sequence.length; i++) {
+        cout << sequence.list[i] << ' ';
+    }
+}
+
 bool DeleteByElement(SequenceType &sequence, int element) {
     bool found = false;
-    for (int i = 0; i < sequence.length; i++) {
+    for (int i = 0; i < sequence.length;) {
         if (sequence.list[i] == element) {
             found = true;
             for (int j = i; j < sequence.length - 1; j++) {
                 sequence.list[j] = sequence.list[j + 1];
             }
             sequence.length -= 1;
+        } else {
+            ++i;
         }
     }
     return found;
+}
+
+
+int partition(SequenceType &sequence, int low, int high) {
+    int pivot = sequence.list[high];
+    int i = (low - 1);
+
+    for (int j = low; j <= high - 1; j++) {
+        if (sequence.list[j] <= pivot) {
+            i++;
+            swap(sequence.list[i], sequence.list[j]);
+        }
+    }
+    swap(sequence.list[i + 1], sequence.list[high]);
+    return (i + 1);
+}
+
+void QuickSort(SequenceType &sequence, int low, int high) {
+    if (low < high) {
+        int pivotIndex = partition(sequence, low, high);
+        QuickSort(sequence, low, pivotIndex - 1);
+        QuickSort(sequence, pivotIndex + 1, high);
+    }
 }
 
 void MergeList(SequenceType &sequence1, SequenceType &sequence2, SequenceType &sequenceMerged) {
@@ -64,7 +95,7 @@ void MergeList(SequenceType &sequence1, SequenceType &sequence2, SequenceType &s
 
 bool DeleteByRange(SequenceType &sequence, int s, int t) {
     if (s >= t || sequence.length == 0) {
-        cout << "Error: Invalid range or empty list!" << endl;
+        cout << "error" << endl;
         return false;
     }
 
@@ -84,7 +115,8 @@ bool DeleteByRange(SequenceType &sequence, int s, int t) {
 int main() {
     SequenceType sequence1, sequence2;
     CreateList(sequence1);
-    DisplayList(sequence1);
+    QuickSort(sequence1, 0, sequence1.length - 1);
+    DisplayList1(sequence1);
 
     // Delete all elements user input
     int element;
@@ -92,16 +124,24 @@ int main() {
     if (!DeleteByElement(sequence1, element)) cout << "error" << endl;
 
     // Merge sequence1 and sequence2
-    CreateList(sequence2);
     SequenceType sequenceMerged;
+    CreateList(sequence2);
     MergeList(sequence1, sequence2, sequenceMerged);
-    DisplayList(sequenceMerged);
+    QuickSort(sequenceMerged, 0, sequenceMerged.length - 1);
+    DisplayList1(sequenceMerged);
 
     // Delete elements by range
     int s, t;
     cin >> s >> t;
-    DeleteByRange(sequenceMerged, s, t);
-    DisplayList(sequenceMerged);
+    if (!DeleteByRange(sequenceMerged, s, t)) goto end;
+    QuickSort(sequenceMerged, 0, sequenceMerged.length - 1);
 
+    if (sequenceMerged.length == 0) {
+        cout << "empty list";
+    } else {
+        DisplayList2(sequenceMerged);
+    }
+
+    end:
     return 0;
 }
