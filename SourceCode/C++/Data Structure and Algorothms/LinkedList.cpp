@@ -16,7 +16,7 @@ struct LinkNode {
 void CreateList(LinkNode* &L, elementType a[], int n) {
     LinkNode *s;
     List = (LinkNode*)malloc(sizeof(LinkNode));
-    List->next = Nulla;
+    List->next = Null;
     for (int i = 0; i < n; i++) {
         s = (LinkNode *) malloc(sizeof(LinkNode))
     }
