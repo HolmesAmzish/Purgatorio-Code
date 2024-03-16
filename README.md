@@ -1,15 +1,25 @@
-# Code
-所有学习中写过的代码，包括许多在线评判的代码。
-欢迎访问我的网站：http://www.arorms.cn
-QQ：1272369577
-
-
-Git链接
-SSH:    git@github.com:HolmesAmzish/Code.git  
-HTTPS:  https://github.com/HolmesAmzish/Code.git
-
-```powershell
-git add .
-git commit 2024
-git push -u origin master
-```
+- Cache 杂项
+  - 2023 二零二三年
+  - 2024 二零二四年
+- OnlineJudge 在线评判
+  - ACM_HDUOJ 杭州电子科技大学ACM
+  - ACM_PUOJ 北京大学ACM
+  - CodeForces
+  - CourseGrading 希冀
+    - sub1 数据结构与算法
+    - sub2 C语言
+  - LeetCode 力扣
+  - LintCode
+  - PAT
+- SourceCode 源代码
+  - Arduino 开发板脚本文件
+  - Batch Windows脚本文件
+  - C
+  - C++
+  - C#
+  - CSS
+  - HTML
+  - Java
+  - JavaScript
+  - PHP
+  - Python
