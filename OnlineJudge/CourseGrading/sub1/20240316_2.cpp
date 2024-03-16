@@ -6,7 +6,7 @@ struct PolyNode {
     int exponent;
     PolyNode* next;
 
-    // 构造函数
+    // Constructor
     PolyNode(int coeff, int expo) {
         coefficient = coeff;
         exponent = expo;
@@ -19,6 +19,7 @@ private:
     PolyNode* head;
 
 public:
+    // Constructor
     Polynomial() : head(nullptr) {}
 
     void Insert(int coeff, int expo) {
@@ -82,8 +83,9 @@ int main() {
     Polynomial poly[2];
     int coeff, expo;
     for (int i = 0; i < 2; i++) {
-        while (cin >> coeff >> expo) {
+        while (cin >> coeff) {
             if (coeff == -100) break;
+            cin >> expo;
             poly[i].Insert(coeff, expo);
         }
     }
