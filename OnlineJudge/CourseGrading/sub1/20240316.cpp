@@ -39,6 +39,10 @@ public:
     }
 
     bool FindMid() {
+        if (head == nullptr) {
+            //cout << "error" << endl;
+            return false;
+        }
         Node *slowPtr = head;
         Node *fastPtr = head;
         while (fastPtr != nullptr && fastPtr->next != nullptr) {

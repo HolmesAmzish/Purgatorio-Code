@@ -37,19 +37,27 @@ public:
 
     void Print() {
         PolyNode* temp = head;
+        bool isNull = true;
         while (temp != nullptr) {
-            cout << temp->coefficient << ' ' << temp->exponent << ' ';
+            if (temp->coefficient != 0) {
+                isNull = false;
+                cout << temp->coefficient << ' ' << temp->exponent << ' ';
+            }
             temp = temp->next;
         }
         cout << endl;
+    
+        if (isNull) {
+            cout << "0" << endl;
+        }
     }
+
 
     Polynomial Add(Polynomial& another) {
         Polynomial result;
         PolyNode* poly_1 = head;
         PolyNode* poly_2 = another.head;
 
-        // 判断指数，不相等时判断大小，小者直接插入。相等时相加再插入。
         while (poly_1 != nullptr && poly_2 != nullptr) {
             if (poly_1->exponent < poly_2->exponent) {
                 result.Insert(poly_1->coefficient, poly_1->exponent);

@@ -31,7 +31,7 @@ public:
         //读取内容
         while (!file.eof()) {
             employee* newEmployee = new employee();
-            file >> newEmployee->Node
+            file >> newEmployee->
         }
     }
 };
