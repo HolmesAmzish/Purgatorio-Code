@@ -1,21 +1,33 @@
-#include <arduino.h>
-#define LED 10
-#define BUTTON 0
+#define LED 13
+#define BUTTON 2
+#define BEEP 3
+
+#define TONE_DING 523
+#define TONE_DONG 262
 
 void setup() {
-  // put your setup code here, to run once:
-  pinMode(LED, OUTPUT);
   pinMode(BUTTON, INPUT);
+  pinMode(LED, OUTPUT);
+  pinMode(BEEP, OUTPUT);
 }
 
+bool isActive = false;
+bool isLight = false;
+
 void loop() {
-  // put your main code here, to run repeatedly:
-  bool isActive = false;
   if (digitalRead(BUTTON)) {
     isActive = !isActive;
+    isLight = !isLight;
   }
 
   if (isActive) {
+    tone(BEEP, TONE_DING, 100);
+    delay(200);
+    tone(BEEP, TONE_DONG, 100);
+    isActive = !isActive;
+  }
+
+  if (isLight) {
     digitalWrite(LED, HIGH);
   } else {
     digitalWrite(LED, LOW);
