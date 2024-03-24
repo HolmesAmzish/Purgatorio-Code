@@ -79,13 +79,17 @@ class UnionStack {
 
 int main() {
     UnionStack stack;
+    
     cout << "stack1: " << (stack.isEmpty_odd() ? "empty" : "not empty") << endl;
     cout << "stack2: " << (stack.isEmpty_even() ? "empty" : "not empty") << endl;
+
     int num; cin >> num;
     stack.push_to(num);
     //stack.print();
     stack.pop_odd();
+
     stack.pop_even();
+
     stack.print();
     return 0;
 }
