@@ -1,15 +1,19 @@
-#define BEEP 10
-#define LED 11
-#define KNOB 0
+#include <Servo.h>
+#define SERVO 9
+#define KNOB A1
+
+Servo servo;
+
+int position = 0;
 
 void setup() {
   // put your setup code here, to run once:
-  pinMode(LED, OUTPUT);
+  servo.attach(SERVO);
 }
 
 void loop() {
   // put your main code here, to run repeatedly:
   int inputValue = analogRead(KNOB);
-  int outputValue = inputValue * 40/1024;
-  analogWrite(LED, outputValue);
+  int outputValue = inputValue * 30/1024;
+  servo.write(outputValue);
 }

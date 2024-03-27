@@ -13,11 +13,11 @@ typedef struct
 	int top2;
 }Dstack;
 
-void initstack(Dstack **s)
+void initstack(Dstack *s)
 {
-	*s=(Dstack *)malloc(sizeof(Dstack));
-	(*s)->top1=-1;
-	(*s)->top2=MAXSIZE;
+	//*s=(Dstack *)malloc(sizeof(Dstack));
+	s->top1=-1;
+	s->top2=MAXSIZE;
 }
  
 void empty(Dstack *s) 
@@ -66,29 +66,29 @@ void push2(Dstack *s,int n)
 		}
 	}	
 }
-void pop1(Dstack *s,int e)
+void pop1(Dstack *s,int *e)
 {
 	if(s->top1==-1)
 	{
-		printf("NULL"); 
+		printf("NULL\n"); 
 	}
-    e=s->data[s->top1];
+    *e=s->data[s->top1];
     s->top1--;
 }
-void pop2(Dstack *s,int e)
+void pop2(Dstack *s,int *e)
 {
 	if(s->top2==MAXSIZE)
 	{
-		printf("NULL"); 
+		printf("NULL\n"); 
 	}
-    e=s->data[s->top2];
+    *e=s->data[s->top2];
     s->top2++;
 }
 void shuchu1(Dstack *s)
 {
 	int i=0;
 	int x=0;
-	while(s->top1==-1)
+	while(s->top1!=-1)
 	{
 		x=s->data[s->top1];
 		s->top1--;
@@ -100,7 +100,7 @@ void shuchu2(Dstack *s)
 {
 	int i=0;
 	int x=0;
-	while(s->top2==MAXSIZE)
+	while(s->top2!=MAXSIZE)
 	{
 		x=s->data[s->top2];
 		s->top2++;
@@ -114,12 +114,13 @@ int main()
 	initstack(&s);
 	empty(s) ;
 	int n=0;
-	int e1=0,e2=0;
+	int *e1,*e2;
 	scanf("%d",&n);
 	push1(s,n);
 	push2(s,n);
 	pop1(s,e1);
 	pop2(s,e2);
+	printf("%d\n%d\n", *e1, *e2);
     shuchu1(s);
     shuchu2(s);
 	    	
