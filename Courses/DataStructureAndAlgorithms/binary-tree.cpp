@@ -8,7 +8,6 @@
  */
 
 #include <iostream>
-#include <string>
 using namespace std;
 
 struct TreeNode {
@@ -22,7 +21,6 @@ TreeNode* BuildTree(const string& input, int& index) {
         index++;
         return nullptr;
     }
-
     TreeNode* node = new TreeNode(input[index]);
     index++;
     node->left = BuildTree(input, index);
@@ -65,6 +63,8 @@ int CountBalancedNode(TreeNode* root) {
 
 int main() {
     string test_sample = "ABD#E###CF##G##";
+    //string tree;
+    //cin >> tree;
     int i = 0;
     TreeNode* root = BuildTree(test_sample, i);
     SwapChildren(root);
