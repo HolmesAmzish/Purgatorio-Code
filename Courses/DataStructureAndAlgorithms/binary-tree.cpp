@@ -62,15 +62,19 @@ int CountBalancedNode(TreeNode* root) {
 }
 
 int main() {
-    string test_sample = "ABD#E###CF##G##";
-    //string tree;
-    //cin >> tree;
+    //string test_sample = "ABD#E###CF##G##";
+    string tree;
+    cin >> tree;
     int i = 0;
-    TreeNode* root = BuildTree(test_sample, i);
+    TreeNode* root = BuildTree(tree, i);
     SwapChildren(root);
-    cout << "The tree after swap: ";
-    PrintTree(root);
-    cout << "\nThe balanced node: " << CountBalancedNode(root) << endl;
+    //cout << "The tree after swap: ";
+    if (root != nullptr)
+        PrintTree(root);
+    else 
+        cout << "NULL";
+    //cout << "\nThe balanced node: "
+    cout << endl << CountBalancedNode(root) << endl;
     
     return 0;
 }

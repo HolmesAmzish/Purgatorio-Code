@@ -35,21 +35,24 @@ bool isCompleteTree(TreeNode *root) {
 
     queue<TreeNode*> level;
     level.push(root);
-    
+    bool reached = false;
+
     while (!level.empty()) {
         TreeNode* current_node = level.front();
-        level.pop(); // pop the parent node
+        level.pop();
+        
+        if (reached && current_node != nullptr)
+            return false;
+
         if (current_node == nullptr) {
-            while (!level.empty()) {
-                if (level.front() != nullptr) {
-                    return false;
-                }
-                level.pop();
-            }
+            reached = true;
+            continue; // Skip to next iteration
         }
+
         level.push(current_node->left);
         level.push(current_node->right);
     }
+
     return true;
 }
 
@@ -70,11 +73,11 @@ void PrintTree(TreeNode *root) {
 }
 
 int main(void) {
-    string test_sample = "AB#C##DE#F###";
-    //string tree;
-    //cin >> tree;
+    //string test_sample = "AB#C##DE#F###";
+    string tree;
+    cin >> tree;
     int i = 0;
-    TreeNode* root = BuildTree(test_sample, i);
+    TreeNode* root = BuildTree(tree, i);
     PrintTree(root);
     if (isCompleteTree(root)) cout << "YES" << endl;
     else cout << "NO" << endl;

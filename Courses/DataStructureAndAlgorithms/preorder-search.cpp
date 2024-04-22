@@ -48,17 +48,25 @@ TreeNode* FindNode(TreeNode* root, const char& key) {
 }
 
 int main(void) {
-    string test_sample = "AB#C##DE#F###";
-    char test_key = 'D';
-    //string tree;
-    //char key;
-    //cin >> tree >> key;
+    //string test_sample = "AB#C##DE#F###";
+    //char test_key = 'D';
+    string tree;
+    char key;
+    cin >> tree >> key;
     int i = 0;
     
-    TreeNode* root = BuildTree(test_sample, i);
-    TreeNode* key_node = FindNode(root, test_key);
-    PrintTreeByPreorder(key_node->left);
-    PrintTreeByPreorder(key_node->right);
+    TreeNode* root = BuildTree(tree, i);
+    TreeNode* key_node = FindNode(root, key);
+    if (key_node == nullptr) {
+        cout << "NONE" << endl;
+    } else {
+        if (key_node->left != nullptr || key_node->right != nullptr) {
+            PrintTreeByPreorder(key_node->left);
+            PrintTreeByPreorder(key_node->right);
+        } else {
+            cout << "NULL" << endl;
+        }
+    }
 
     return 0;
 }
